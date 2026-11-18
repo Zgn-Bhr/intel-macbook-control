@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=MacBook Control
+GenericName=MacBook Settings
+Comment=Fan, keyboard light and sensors for this MacBook Pro
+Exec=macbook-control
+Icon=computer-laptop
+Terminal=false
+Categories=Settings;HardwareSettings;
+Keywords=fan;temperature;sensors;keyboard;backlight;battery;smc;

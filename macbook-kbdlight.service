@@ -1,0 +1,11 @@
+[Unit]
+Description=MacBook Control: keyboard light follows the room's brightness
+Documentation=file:///usr/local/bin/macbook-kbdlight
+
+[Service]
+ExecStart=/usr/bin/python3 -I /usr/local/bin/macbook-kbdlight
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

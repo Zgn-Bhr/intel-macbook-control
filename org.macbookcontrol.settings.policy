@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+  <vendor>MacBook Control</vendor>
+  <!-- Lets MacBook Control run macbook-settings as root: battery charge limit (50-100 %)
+       and three Apple keyboard options. macbook-settings checks every value before writing. -->
+  <action id="org.macbookcontrol.settings.set">
+    <description>Change the MacBook's charge limit and keyboard options</description>
+    <message>Authentication is required to change the charge limit or keyboard options</message>
+    <icon_name>computer-laptop</icon_name>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/local/bin/macbook-settings</annotate>
+  </action>
+</policyconfig>

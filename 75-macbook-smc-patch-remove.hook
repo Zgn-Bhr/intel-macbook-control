@@ -1,0 +1,12 @@
+# MacBook Control: when a kernel is removed, delete its patched macsmc-acpi copy first,
+# so pacman can clean up the kernel's module folder completely.
+[Trigger]
+Operation = Remove
+Type = Path
+Target = usr/lib/modules/*/kernel/drivers/platform/x86/macsmc-acpi.ko*
+
+[Action]
+Description = MacBook Control: removing patched SMC drivers of removed kernels...
+When = PreTransaction
+Exec = /usr/local/bin/macbook-smc-patch --hook-remove
+NeedsTargets

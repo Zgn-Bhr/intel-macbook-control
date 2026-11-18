@@ -1,0 +1,13 @@
+# MacBook Control: after a kernel install or update, let its macsmc-acpi driver run on this
+# pre-T2 Mac (see /usr/local/bin/macbook-smc-patch). Runs after depmod (60) and DKMS (70).
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/lib/modules/*/kernel/drivers/platform/x86/macsmc-acpi.ko*
+
+[Action]
+Description = MacBook Control: enabling the SMC driver on this pre-T2 Mac...
+When = PostTransaction
+Exec = /usr/local/bin/macbook-smc-patch --hook-install
+NeedsTargets

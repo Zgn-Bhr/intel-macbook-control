@@ -1,0 +1,3 @@
+# Start smcfan and smckbd when the macsmc driver creates /dev/smc. Kernels with the old
+# applesmc driver (e.g. linux-cachyos-lts) never create it, so mbpfan runs there instead.
+SUBSYSTEM=="misc", KERNEL=="smc", TAG+="systemd", ENV{SYSTEMD_WANTS}+="smcfan.service smckbd.service"

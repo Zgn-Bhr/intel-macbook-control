@@ -1,0 +1,22 @@
+[Unit]
+Description=Fan control for Intel Macs through the macsmc driver (/dev/smc)
+Documentation=file:///usr/local/bin/smcfan
+# Started by 90-smcfan.rules when /dev/smc appears; stops if it goes away
+BindsTo=dev-smc.device
+After=dev-smc.device
+StartLimitIntervalSec=60
+StartLimitBurst=3
+
+[Service]
+ExecStart=/usr/bin/python3 -I /usr/local/bin/smcfan run
+Restart=on-failure
+RestartSec=5
+# It only reads /sys, writes its two files in /run and talks to /dev/smc
+ProtectSystem=strict
+ReadWritePaths=/run
+ProtectHome=yes
+PrivateTmp=yes
+PrivateNetwork=yes
+NoNewPrivileges=yes
+DevicePolicy=closed
+DeviceAllow=/dev/smc rw
